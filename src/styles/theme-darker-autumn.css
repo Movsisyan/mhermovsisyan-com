@@ -1,38 +1,34 @@
 /* ========================================
-   DESIGN SYSTEM: HAVANA VIEJA
-   Vintage, Sun-soaked, "Old City" Aesthetic
+   DESIGN SYSTEM: HARVEST DEEP
+   Rich, Earthy, "Late Autumn" Aesthetic
 ======================================== */
 
 :root {
-  /* The Streets */
-  --bg-void: #fdf6e3;
-  /* Vintage Cream / Sun-faded Wall */
+  /* The Earth */
+  --bg-void: #f0ebe5;
+  /* Sandstone/Oatmeal - Slightly darker base */
   --bg-card: rgba(255, 255, 255, 0.5);
-  --bg-card-hover: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.8);
 
-  /* Havana Accents */
+  /* Deep Autumn Accents */
   /* Mapping old variable names to new colors */
-  --color-cyan: #2a9d8f;
-  /* Verdigris Teal (Classic Car Blue/Green) */
-  --color-purple: #e76f51;
-  /* Terracotta / Faded Red Tile */
-  --color-acid: #e9c46a;
-  /* Mustard / Saffron Yellow */
-
-  /* Additional Palette Colors */
-  --color-palm: #264653;
-  /* Dark Jungle Green */
+  --color-cyan: #b45309;
+  /* Amber 700 - Deep Gold */
+  --color-purple: #7c2d12;
+  /* Orange 900 - Dark Rust */
+  --color-acid: #65a30d;
+  /* Lime 600 - Moss */
 
   /* Text Colors */
-  --text-main: #264653;
-  /* Dark Jungle Green (Softer than black) */
-  --text-muted: #6f5e53;
-  /* Dusty Brown */
-  --text-inverted: #fdf6e3;
+  --text-main: #271c19;
+  /* Very Dark Coffee */
+  --text-muted: #5c4d48;
+  /* Taupe */
+  --text-inverted: #f0ebe5;
 
   /* Gradients */
-  --grad-liquid: linear-gradient(180deg, rgba(42, 157, 143, 0), rgba(231, 111, 81, 0.1) 50%, rgba(42, 157, 143, 0));
-  --grad-glow: radial-gradient(circle at center, rgba(233, 196, 106, 0.2) 0%, transparent 60%);
+  --grad-liquid: linear-gradient(180deg, rgba(180, 83, 9, 0), rgba(124, 45, 18, 0.05) 50%, rgba(180, 83, 9, 0));
+  --grad-glow: radial-gradient(circle at center, rgba(180, 83, 9, 0.1) 0%, transparent 70%);
 
   /* Typography */
   --font-hero: 'Inter', system-ui, -apple-system, sans-serif;
@@ -43,12 +39,10 @@
   --sidebar-width: 300px;
 
   /* Effects */
-  --blur-glass: blur(8px);
-  /* Minimal, hazy blur */
-  --border-subtle: 1px solid rgba(38, 70, 83, 0.1);
-  --border-glow: 1px solid rgba(42, 157, 143, 0.4);
-  --shadow-neon: 4px 4px 0px rgba(231, 111, 81, 0.1);
-  /* Slightly offset shadow */
+  --blur-glass: blur(12px);
+  --border-subtle: 1px solid rgba(62, 46, 33, 0.08);
+  --border-glow: 1px solid rgba(180, 83, 9, 0.3);
+  --shadow-neon: 0 4px 12px -2px rgba(62, 46, 33, 0.1);
 }
 
 /* Reset & Base */
@@ -71,9 +65,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    linear-gradient(rgba(233, 196, 106, 0.05) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(233, 196, 106, 0.05) 2px, transparent 2px);
-  background-size: 40px 40px;
+    radial-gradient(circle at 10% 20%, rgba(180, 83, 9, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(124, 45, 18, 0.06) 0%, transparent 40%);
   background-attachment: fixed;
 }
 
@@ -81,8 +74,15 @@ body {
    ANIMATED BACKGROUND MESH
 ======================================== */
 .grid-overlay {
-  display: none;
-  /* Removed to show the vintage paper-like grid on body */
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(62, 46, 33, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 46, 33, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ========================================
@@ -107,7 +107,8 @@ body {
    NAVIGATION RAIL
 ======================================== */
 .nav-rail {
-  background: #fdf6e3;
+  background: #f0ebe5;
+  /* Matches base background */
   border-right: var(--border-subtle);
   display: flex;
   flex-direction: column;
@@ -117,7 +118,7 @@ body {
   top: 0;
   height: 100vh;
   gap: 40px;
-  box-shadow: 2px 0 10px rgba(38, 70, 83, 0.05);
+  box-shadow: 1px 0 20px rgba(62, 46, 33, 0.04);
   z-index: 100;
 }
 
@@ -131,24 +132,21 @@ body {
     border-bottom: var(--border-subtle);
     justify-content: center;
     position: relative;
-    box-shadow: 0 2px 10px rgba(38, 70, 83, 0.05);
+    box-shadow: 0 1px 20px rgba(62, 46, 33, 0.04);
   }
 }
 
 .brand-monogram {
-  width: 44px;
-  height: 44px;
-  background: var(--color-purple);
-  color: #fdf6e3;
-  font-weight: 800;
+  width: 40px;
+  height: 40px;
+  background: var(--text-main);
+  color: #e5e0da;
+  font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-data);
-  border-radius: 4px;
-  /* Classic tile shape */
-  border: 2px solid var(--text-main);
-  box-shadow: 3px 3px 0 var(--text-main);
+  border-radius: 6px;
 }
 
 .nav-links {
@@ -167,15 +165,14 @@ body {
 }
 
 .nav-item {
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--text-main);
-  border-radius: 2px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #c7c0b8;
   transform: rotate(45deg);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  background: #fdf6e3;
+  background: #fdfaf7;
 }
 
 .nav-item::after {
@@ -187,22 +184,23 @@ body {
   font-family: var(--font-data);
   font-size: 10px;
   text-transform: uppercase;
-  color: var(--color-palm);
+  color: var(--color-cyan);
   opacity: 0;
   white-space: nowrap;
   transition: all 0.3s ease;
   pointer-events: none;
-  background: var(--color-acid);
-  color: var(--text-main);
-  padding: 4px 10px;
-  border: 2px solid var(--text-main);
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  background: var(--text-main);
+  color: #e5e0da;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
 }
 
 .nav-item:hover,
 .nav-item.active {
   background: var(--color-cyan);
-  transform: rotate(0deg) scale(1.1);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 15px rgba(180, 83, 9, 0.25);
 }
 
 .nav-item:hover::after {
@@ -235,58 +233,61 @@ section {
 .glitch-text {
   font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
   color: var(--text-main);
   position: relative;
-  text-shadow: 4px 4px 0 rgba(231, 111, 81, 0.2);
+  text-transform: none;
 }
 
 .glitch-text::before {
   content: attr(data-text);
   position: absolute;
-  left: -2px;
-  top: -2px;
-  color: var(--color-acid);
-  z-index: -1;
-  clip-path: none;
+  left: 2px;
+  text-shadow: -1px 0 var(--color-purple);
+  top: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  opacity: 0.15;
   mix-blend-mode: multiply;
 }
 
 .subtitle-mono {
   font-family: var(--font-data);
   font-size: 14px;
-  color: var(--color-purple);
+  color: var(--color-cyan);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 700;
+  font-weight: 600;
   background: transparent;
   padding: 0;
-  border-bottom: 3px solid var(--color-acid);
-  width: fit-content;
+  border: none;
 }
 
 .subtitle-mono::before {
-  display: none;
+  display: block;
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--color-cyan);
 }
 
 /* ========================================
-   CARDS (Havana Tile)
+   CARDS (Deep Autumn Glass)
 ======================================== */
 .cyber-card {
-  background: white;
-  border: 2px solid var(--text-main);
+  background: var(--bg-card);
+  backdrop-filter: var(--blur-glass);
+  border: var(--border-subtle);
   padding: 32px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 6px 6px 0 rgba(233, 196, 106, 0.5);
-  /* Mustard shadow */
-  border-radius: 0;
+  box-shadow: 0 4px 15px rgba(62, 46, 33, 0.05);
+  border-radius: 8px;
 }
 
 .cyber-card::before {
@@ -294,21 +295,21 @@ section {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 6px;
-  background: repeating-linear-gradient(45deg,
-      var(--color-cyan),
-      var(--color-cyan) 10px,
-      var(--color-purple) 10px,
-      var(--color-purple) 20px);
-  transition: all 0.3s ease;
-  opacity: 1;
+  width: 3px;
+  height: 0;
+  background: var(--color-cyan);
+  transition: height 0.3s ease;
 }
 
 .cyber-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 rgba(231, 111, 81, 0.4);
-  /* Shifts to terracotta shadow */
+  background: var(--bg-card-hover);
+  border-color: rgba(180, 83, 9, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(62, 46, 33, 0.12);
+}
+
+.cyber-card:hover::before {
+  height: 100%;
 }
 
 /* ========================================
@@ -340,8 +341,7 @@ section {
   display: flex;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 2px solid rgba(38, 70, 83, 0.1);
-  /* Dark jungle green line */
+  border-bottom: 1px solid rgba(62, 46, 33, 0.08);
   font-family: var(--font-data);
 }
 
@@ -351,9 +351,8 @@ section {
 }
 
 .stat-value {
-  color: var(--color-purple);
-  /* Terracotta numbers */
-  font-weight: 800;
+  color: var(--text-main);
+  font-weight: bold;
 }
 
 /* ========================================
@@ -363,7 +362,7 @@ section {
   display: flex;
   align-items: baseline;
   padding: 24px 0;
-  border-bottom: 1px solid rgba(38, 70, 83, 0.15);
+  border-bottom: 1px solid rgba(62, 46, 33, 0.08);
   text-decoration: none;
   transition: all 0.2s;
   background: transparent;
@@ -372,34 +371,37 @@ section {
 
 .log-entry:hover {
   padding-left: 16px;
-  background: rgba(42, 157, 143, 0.1);
-  /* Light Teal wash */
-  border-bottom-color: var(--color-cyan);
+  border-color: var(--color-cyan);
+  background: linear-gradient(90deg, rgba(180, 83, 9, 0.05), transparent);
+  color: var(--text-main);
 }
 
 .log-entry:hover * {
   color: inherit;
 }
 
+.log-entry:hover .log-date {
+  color: var(--color-cyan);
+}
+
 .log-index {
   font-family: var(--font-data);
-  color: var(--color-acid);
-  /* Mustard index */
+  color: var(--text-muted);
   margin-right: 24px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .log-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
   color: var(--text-main);
   flex: 1;
 }
 
 .log-date {
   font-family: var(--font-data);
-  color: var(--text-muted);
+  color: var(--color-cyan);
   font-size: 12px;
   font-weight: 600;
 }
@@ -410,29 +412,41 @@ section {
 .btn-cyber {
   display: inline-block;
   padding: 16px 32px;
-  background: var(--color-purple);
-  border: 2px solid var(--text-main);
-  color: #fdf6e3;
+  background: transparent;
+  border: 1px solid var(--text-main);
+  color: var(--text-main);
   font-family: var(--font-data);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 12px;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s;
   position: relative;
-  overflow: visible;
-  /* To see shadow */
-  font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-main);
+  overflow: hidden;
+  font-weight: 600;
+  box-shadow: none;
 }
 
 .btn-cyber::before {
-  display: none;
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--text-main);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
 }
 
 .btn-cyber:hover {
-  background: var(--color-cyan);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--text-main);
-  color: #fdf6e3;
+  color: #f0ebe5;
+  transform: none;
+  border-color: var(--text-main);
+  box-shadow: none;
+}
+
+.btn-cyber:hover::before {
+  width: 100%;
 }

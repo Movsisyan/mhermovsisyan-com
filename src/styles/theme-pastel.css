@@ -1,38 +1,37 @@
 /* ========================================
-   DESIGN SYSTEM: HAVANA VIEJA
-   Vintage, Sun-soaked, "Old City" Aesthetic
+   DESIGN SYSTEM: THE ARTIST'S PALETTE
+   Playful, Soft, "Creative Studio" Aesthetic
 ======================================== */
 
 :root {
-  /* The Streets */
-  --bg-void: #fdf6e3;
-  /* Vintage Cream / Sun-faded Wall */
-  --bg-card: rgba(255, 255, 255, 0.5);
-  --bg-card-hover: rgba(255, 255, 255, 0.85);
+  /* The Canvas */
+  --bg-void: #fefcfb;
+  /* Soft warm white */
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
 
-  /* Havana Accents */
+  /* Pastel Accents */
   /* Mapping old variable names to new colors */
-  --color-cyan: #2a9d8f;
-  /* Verdigris Teal (Classic Car Blue/Green) */
-  --color-purple: #e76f51;
-  /* Terracotta / Faded Red Tile */
-  --color-acid: #e9c46a;
-  /* Mustard / Saffron Yellow */
+  --color-cyan: #818cf8;
+  /* Soft Indigo/Periwinkle */
+  --color-purple: #f472b6;
+  /* Soft Pink */
+  --color-acid: #34d399;
+  /* Mint Cobalt */
 
-  /* Additional Palette Colors */
-  --color-palm: #264653;
-  /* Dark Jungle Green */
+  /* Additional Palette Colors (used in gradients) */
+  --color-peach: #fbbf24;
 
   /* Text Colors */
-  --text-main: #264653;
-  /* Dark Jungle Green (Softer than black) */
-  --text-muted: #6f5e53;
-  /* Dusty Brown */
-  --text-inverted: #fdf6e3;
+  --text-main: #334155;
+  /* Slate 700 - Softer than black */
+  --text-muted: #64748b;
+  /* Slate 500 */
+  --text-inverted: #ffffff;
 
   /* Gradients */
-  --grad-liquid: linear-gradient(180deg, rgba(42, 157, 143, 0), rgba(231, 111, 81, 0.1) 50%, rgba(42, 157, 143, 0));
-  --grad-glow: radial-gradient(circle at center, rgba(233, 196, 106, 0.2) 0%, transparent 60%);
+  --grad-liquid: linear-gradient(180deg, rgba(129, 140, 248, 0), rgba(244, 114, 182, 0.1) 50%, rgba(129, 140, 248, 0));
+  --grad-glow: radial-gradient(circle at center, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
 
   /* Typography */
   --font-hero: 'Inter', system-ui, -apple-system, sans-serif;
@@ -43,12 +42,10 @@
   --sidebar-width: 300px;
 
   /* Effects */
-  --blur-glass: blur(8px);
-  /* Minimal, hazy blur */
-  --border-subtle: 1px solid rgba(38, 70, 83, 0.1);
-  --border-glow: 1px solid rgba(42, 157, 143, 0.4);
-  --shadow-neon: 4px 4px 0px rgba(231, 111, 81, 0.1);
-  /* Slightly offset shadow */
+  --blur-glass: blur(24px);
+  --border-subtle: 1px solid rgba(129, 140, 248, 0.1);
+  --border-glow: 1px solid rgba(129, 140, 248, 0.3);
+  --shadow-neon: 0 10px 25px -5px rgba(129, 140, 248, 0.15), 0 8px 10px -6px rgba(129, 140, 248, 0.1);
 }
 
 /* Reset & Base */
@@ -71,9 +68,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    linear-gradient(rgba(233, 196, 106, 0.05) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(233, 196, 106, 0.05) 2px, transparent 2px);
-  background-size: 40px 40px;
+    radial-gradient(circle at 15% 25%, rgba(244, 114, 182, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(52, 211, 153, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.05) 0%, transparent 60%);
   background-attachment: fixed;
 }
 
@@ -81,8 +78,15 @@ body {
    ANIMATED BACKGROUND MESH
 ======================================== */
 .grid-overlay {
-  display: none;
-  /* Removed to show the vintage paper-like grid on body */
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(129, 140, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 140, 248, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ========================================
@@ -107,7 +111,7 @@ body {
    NAVIGATION RAIL
 ======================================== */
 .nav-rail {
-  background: #fdf6e3;
+  background: #ffffff;
   border-right: var(--border-subtle);
   display: flex;
   flex-direction: column;
@@ -117,7 +121,7 @@ body {
   top: 0;
   height: 100vh;
   gap: 40px;
-  box-shadow: 2px 0 10px rgba(38, 70, 83, 0.05);
+  box-shadow: 1px 0 20px rgba(129, 140, 248, 0.05);
   z-index: 100;
 }
 
@@ -131,24 +135,22 @@ body {
     border-bottom: var(--border-subtle);
     justify-content: center;
     position: relative;
-    box-shadow: 0 2px 10px rgba(38, 70, 83, 0.05);
+    box-shadow: 0 1px 20px rgba(129, 140, 248, 0.05);
   }
 }
 
 .brand-monogram {
   width: 44px;
   height: 44px;
-  background: var(--color-purple);
-  color: #fdf6e3;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
+  color: white;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-data);
-  border-radius: 4px;
-  /* Classic tile shape */
-  border: 2px solid var(--text-main);
-  box-shadow: 3px 3px 0 var(--text-main);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
 }
 
 .nav-links {
@@ -167,15 +169,16 @@ body {
 }
 
 .nav-item {
-  width: 14px;
-  height: 14px;
-  border: 2px solid var(--text-main);
-  border-radius: 2px;
-  transform: rotate(45deg);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 12px;
+  height: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  /* Circles for playful feel */
+  transform: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   position: relative;
-  background: #fdf6e3;
+  background: #f8fafc;
 }
 
 .nav-item::after {
@@ -187,22 +190,25 @@ body {
   font-family: var(--font-data);
   font-size: 10px;
   text-transform: uppercase;
-  color: var(--color-palm);
+  color: var(--color-cyan);
   opacity: 0;
   white-space: nowrap;
   transition: all 0.3s ease;
   pointer-events: none;
-  background: var(--color-acid);
+  background: white;
   color: var(--text-main);
   padding: 4px 10px;
-  border: 2px solid var(--text-main);
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .nav-item:hover,
 .nav-item.active {
   background: var(--color-cyan);
-  transform: rotate(0deg) scale(1.1);
+  border-color: var(--color-cyan);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.2);
 }
 
 .nav-item:hover::after {
@@ -235,22 +241,25 @@ section {
 .glitch-text {
   font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  color: var(--text-main);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text-main) 0%, var(--color-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: relative;
-  text-shadow: 4px 4px 0 rgba(231, 111, 81, 0.2);
 }
 
 .glitch-text::before {
   content: attr(data-text);
   position: absolute;
-  left: -2px;
-  top: -2px;
-  color: var(--color-acid);
+  left: 4px;
+  top: 4px;
+  background: none;
+  -webkit-text-fill-color: rgba(244, 114, 182, 0.2);
   z-index: -1;
   clip-path: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
+  filter: blur(8px);
 }
 
 .subtitle-mono {
@@ -264,9 +273,9 @@ section {
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  background: transparent;
-  padding: 0;
-  border-bottom: 3px solid var(--color-acid);
+  background: rgba(244, 114, 182, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
   width: fit-content;
 }
 
@@ -275,18 +284,18 @@ section {
 }
 
 /* ========================================
-   CARDS (Havana Tile)
+   CARDS (Frosted Dream)
 ======================================== */
 .cyber-card {
-  background: white;
-  border: 2px solid var(--text-main);
+  background: var(--bg-card);
+  backdrop-filter: var(--blur-glass);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 32px;
-  transition: all 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  box-shadow: 6px 6px 0 rgba(233, 196, 106, 0.5);
-  /* Mustard shadow */
-  border-radius: 0;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
 }
 
 .cyber-card::before {
@@ -296,19 +305,20 @@ section {
   left: 0;
   width: 100%;
   height: 6px;
-  background: repeating-linear-gradient(45deg,
-      var(--color-cyan),
-      var(--color-cyan) 10px,
-      var(--color-purple) 10px,
-      var(--color-purple) 20px);
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-purple), var(--color-acid));
   transition: all 0.3s ease;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .cyber-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 rgba(231, 111, 81, 0.4);
-  /* Shifts to terracotta shadow */
+  background: var(--bg-card-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(129, 140, 248, 0.2);
+}
+
+.cyber-card:hover::before {
+  height: 6px;
+  /* Keeping top border */
 }
 
 /* ========================================
@@ -340,8 +350,7 @@ section {
   display: flex;
   justify-content: space-between;
   padding: 16px 0;
-  border-bottom: 2px solid rgba(38, 70, 83, 0.1);
-  /* Dark jungle green line */
+  border-bottom: 1px solid rgba(129, 140, 248, 0.1);
   font-family: var(--font-data);
 }
 
@@ -351,9 +360,8 @@ section {
 }
 
 .stat-value {
-  color: var(--color-purple);
-  /* Terracotta numbers */
-  font-weight: 800;
+  color: var(--text-main);
+  font-weight: 700;
 }
 
 /* ========================================
@@ -362,19 +370,21 @@ section {
 .log-entry {
   display: flex;
   align-items: baseline;
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(38, 70, 83, 0.15);
+  padding: 24px;
+  border: 1px solid rgba(129, 140, 248, 0.1);
+  border-radius: 16px;
   text-decoration: none;
-  transition: all 0.2s;
-  background: transparent;
-  margin-bottom: 0;
+  transition: all 0.3s;
+  background: white;
+  margin-bottom: 12px;
 }
 
 .log-entry:hover {
-  padding-left: 16px;
-  background: rgba(42, 157, 143, 0.1);
-  /* Light Teal wash */
-  border-bottom-color: var(--color-cyan);
+  padding-left: 32px;
+  border-color: var(--color-cyan);
+  background: white;
+  box-shadow: 0 8px 20px -5px rgba(129, 140, 248, 0.15);
+  transform: scale(1.01);
 }
 
 .log-entry:hover * {
@@ -383,11 +393,11 @@ section {
 
 .log-index {
   font-family: var(--font-data);
-  color: var(--color-acid);
-  /* Mustard index */
+  color: var(--color-cyan);
   margin-right: 24px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
+  opacity: 0.6;
 }
 
 .log-title {
@@ -401,7 +411,7 @@ section {
   font-family: var(--font-data);
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ========================================
@@ -410,29 +420,45 @@ section {
 .btn-cyber {
   display: inline-block;
   padding: 16px 32px;
-  background: var(--color-purple);
-  border: 2px solid var(--text-main);
-  color: #fdf6e3;
+  background: white;
+  border: 1px solid transparent;
+  /* Gradient border trick needs wrapper usually, using shadow instead */
+  color: var(--text-main);
   font-family: var(--font-data);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 12px;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s;
   position: relative;
-  overflow: visible;
-  /* To see shadow */
+  overflow: hidden;
   font-weight: 700;
-  box-shadow: 4px 4px 0 var(--text-main);
+  border-radius: 50px;
+  /* Pill shape */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .btn-cyber::before {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  padding: 2px;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-purple));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .btn-cyber:hover {
-  background: var(--color-cyan);
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--text-main);
-  color: #fdf6e3;
+  color: white;
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-purple));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(129, 140, 248, 0.3);
 }
