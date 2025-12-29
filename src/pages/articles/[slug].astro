@@ -15,18 +15,25 @@ const { Content } = await article.render();
 ---
 
 <BaseLayout title={`${article.data.title} — Mher Movsisyan`} description={article.data.description}>
-  <!-- Floating Background Orbs -->
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-  </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">Mher Movsisyan</a>
+      <nav class="nav">
+        <a href="/#expertise" class="nav-link">Expertise</a>
+        <a href="/#work" class="nav-link">Work</a>
+        <a href="/articles" class="nav-link">Writing</a>
+        <a href="/#contact" class="nav-cta">Get in touch</a>
+      </nav>
+    </div>
+  </header>
 
   <main class="container article-page">
     <a href="/articles" class="back-link">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M19 12H5M12 19l-7-7 7-7"/>
       </svg>
-      All writing
+      All articles
     </a>
 
     <article>
@@ -34,7 +41,7 @@ const { Content } = await article.render();
         <span class="article-category">{article.data.category}</span>
         <h1 class="article-title">{article.data.title}</h1>
         <p class="article-desc">{article.data.description}</p>
-        <time class="article-date">
+        <time class="article-meta">
           {article.data.pubDate.toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
@@ -61,162 +68,8 @@ const { Content } = await article.render();
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
-        Back to all writing
+        Back to all articles
       </a>
     </footer>
   </main>
 </BaseLayout>
-
-<style>
-  .article-page {
-    padding-top: 80px;
-    padding-bottom: 80px;
-    max-width: 720px;
-  }
-
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: var(--color-text-muted);
-    margin-bottom: 48px;
-    transition: color 0.2s;
-  }
-
-  .back-link:hover {
-    color: var(--color-neon-blue);
-  }
-
-  .article-header {
-    margin-bottom: 48px;
-  }
-
-  .article-category {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-neon-purple);
-    margin-bottom: 16px;
-  }
-
-  .article-title {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-
-  .article-desc {
-    font-size: 18px;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .article-date {
-    font-size: 14px;
-    color: var(--color-text-muted);
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  .article-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    padding: 5px 12px;
-    background: rgba(0, 212, 255, 0.1);
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-neon-blue);
-  }
-
-  .prose {
-    color: var(--color-text-secondary);
-    font-size: 17px;
-    line-height: 1.8;
-  }
-
-  .prose :global(h2),
-  .prose :global(h3) {
-    color: var(--color-text);
-    margin-top: 48px;
-    margin-bottom: 16px;
-    font-weight: 600;
-  }
-
-  .prose :global(h2) {
-    font-size: 24px;
-  }
-
-  .prose :global(h3) {
-    font-size: 20px;
-  }
-
-  .prose :global(p) {
-    margin-bottom: 24px;
-  }
-
-  .prose :global(a) {
-    color: var(--color-neon-blue);
-    text-decoration: underline;
-  }
-
-  .prose :global(code) {
-    font-family: var(--font-mono);
-    font-size: 0.9em;
-    padding: 2px 6px;
-    background: var(--color-surface-elevated);
-    border-radius: 4px;
-  }
-
-  .prose :global(pre) {
-    background: #0f172a;
-    border-radius: 12px;
-    padding: 20px;
-    overflow-x: auto;
-    margin: 24px 0;
-    color: #e2e8f0;
-  }
-
-  .prose :global(pre code) {
-    padding: 0;
-    background: none;
-    color: inherit;
-  }
-
-  .prose :global(ul),
-  .prose :global(ol) {
-    margin-bottom: 24px;
-    padding-left: 24px;
-  }
-
-  .prose :global(li) {
-    margin-bottom: 8px;
-  }
-
-  .prose :global(ul li) { list-style-type: disc; }
-  .prose :global(ol li) { list-style-type: decimal; }
-
-  .prose :global(blockquote) {
-    border-left: 3px solid var(--color-neon-blue);
-    padding-left: 20px;
-    margin: 24px 0;
-    font-style: italic;
-    color: var(--color-text-muted);
-  }
-
-  .article-footer {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-  }
-</style>
