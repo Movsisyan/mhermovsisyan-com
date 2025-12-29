@@ -1,22 +1,244 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
-import Experience from '../components/Experience.astro';
-import About from '../components/About.astro';
-import AppShowcase from '../components/AppShowcase.astro';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+const recentArticles = articles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
 ---
 
-<BaseLayout title="Home">
-  <Header />
+<BaseLayout title="Mher Movsisyan — Building the Future">
+  <!-- Floating Background Orbs -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navigation Dots -->
+  <nav class="nav-dots" aria-label="Section navigation">
+    <button class="nav-dot active" data-section="hero" aria-label="Hero"></button>
+    <button class="nav-dot" data-section="expertise" aria-label="Expertise"></button>
+    <button class="nav-dot" data-section="project" aria-label="Project"></button>
+    <button class="nav-dot" data-section="journey" aria-label="Journey"></button>
+    <button class="nav-dot" data-section="writing" aria-label="Writing"></button>
+    <button class="nav-dot" data-section="contact" aria-label="Contact"></button>
+  </nav>
+
   <main>
-    <Hero />
-    <Services />
-    <Experience />
-    <AppShowcase />
-    <About />
+    <!-- HERO -->
+    <section class="hero container" id="hero">
+      <span class="hero-badge">Open to new opportunities</span>
+      <h1 class="hero-title">
+        I'm <span class="gradient">Mher.</span><br>
+        I build the future.
+      </h1>
+      <p class="hero-subtitle">
+        A <strong>senior iOS engineer</strong> with 10+ years of experience, 
+        now pioneering <strong>on-device AI</strong> — making intelligent 
+        apps that respect privacy and work everywhere.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Let's build together</a>
+        <a href="#project" class="btn btn-secondary">See my work</a>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="section container" id="expertise">
+      <span class="section-label">What I do</span>
+      <h2 class="section-title">Expertise</h2>
+      
+      <div class="expertise-grid">
+        <div class="glass-card expertise-card">
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <h3 class="expertise-title">iOS Development</h3>
+          <p class="expertise-desc">
+            Building native iOS apps with Swift, SwiftUI, and UIKit. 
+            From startups to Amazon-scale products.
+          </p>
+        </div>
+
+        <div class="glass-card expertise-card">
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path>
+              <circle cx="7.5" cy="14.5" r="1.5"></circle>
+              <circle cx="16.5" cy="14.5" r="1.5"></circle>
+            </svg>
+          </div>
+          <h3 class="expertise-title">On-Device AI</h3>
+          <p class="expertise-desc">
+            Running LLMs locally on iPhone. CoreML, MLX, and privacy-first 
+            AI that works without the cloud.
+          </p>
+        </div>
+
+        <div class="glass-card expertise-card">
+          <div class="expertise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <h3 class="expertise-title">Technical Consulting</h3>
+          <p class="expertise-desc">
+            Helping teams ship faster with architecture reviews, 
+            code audits, and strategic guidance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECT -->
+    <section class="section container" id="project">
+      <div class="glass-card project-card">
+        <div class="project-content">
+          <span class="project-label">Featured Project</span>
+          <h3>Offline Assistant</h3>
+          <p>
+            A fully private AI assistant that runs entirely on your device. 
+            No internet required. No data leaves your phone. 
+            The future of personal AI.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Swift</span>
+            <span class="project-tag">MLX</span>
+            <span class="project-tag">On-Device LLM</span>
+            <span class="project-tag">Coming Soon</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <span>🤖</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section container" id="journey">
+      <span class="section-label">My path</span>
+      <h2 class="section-title">Journey</h2>
+      
+      <div class="journey-list">
+        <div class="journey-item">
+          <span class="journey-period">2022–2024</span>
+          <div class="journey-content">
+            <h3>Amazon</h3>
+            <p>iOS Engineer on health products. Built features for millions.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <span class="journey-period">2021–2022</span>
+          <div class="journey-content">
+            <h3>Glovo</h3>
+            <p>iOS Engineer on growth & marketing tech.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <span class="journey-period">2019–2021</span>
+          <div class="journey-content">
+            <h3>Jybird LLC</h3>
+            <p>Built real-time communication features from scratch.</p>
+          </div>
+        </div>
+        <div class="journey-item">
+          <span class="journey-period">2014–2019</span>
+          <div class="journey-content">
+            <h3>Earlier Work</h3>
+            <p>Personal apps, freelance, learning the craft.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section class="section container" id="writing">
+      <span class="section-label">Ideas</span>
+      <h2 class="section-title">Writing</h2>
+      
+      <div class="articles-grid">
+        {recentArticles.map((article) => (
+          <a href={`/articles/${article.slug}`} class="glass-card article-card">
+            <span class="article-category">{article.data.category}</span>
+            <h3 class="article-title">{article.data.title}</h3>
+            <span class="article-date">
+              {article.data.pubDate.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short'
+              })}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="cta-section container" id="contact">
+      <h2 class="cta-title">
+        <span class="gradient">Ready to build</span><br>
+        something amazing?
+      </h2>
+      <p class="cta-subtitle">
+        I'm always excited to work on projects that push boundaries 
+        and make a real impact.
+      </p>
+      <a href="mailto:mher@mhermovsisyan.com" class="btn btn-primary">
+        mher@mhermovsisyan.com
+      </a>
+      
+      <div class="cta-links" style="margin-top: 48px;">
+        <a href="https://github.com/Movsisyan" target="_blank" rel="noopener noreferrer" class="cta-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/mhermovsisyan" target="_blank" rel="noopener noreferrer" class="cta-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://twitter.com/mhermovsisyan" target="_blank" rel="noopener noreferrer" class="cta-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <span class="cta-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Vancouver, Canada
+        </span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer container">
+      <p>© 2024 Mher Movsisyan. Building the future, one line at a time.</p>
+    </footer>
   </main>
-  <Footer />
+
+  <script>
+    // Simple scroll-based navigation dot updates
+    const dots = document.querySelectorAll('.nav-dot');
+    const sections = document.querySelectorAll('section[id]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          dots.forEach(dot => dot.classList.remove('active'));
+          const activeDot = document.querySelector(`[data-section="${entry.target.id}"]`);
+          activeDot?.classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    sections.forEach(section => observer.observe(section));
+    
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const sectionId = dot.getAttribute('data-section');
+        document.getElementById(sectionId!)?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </BaseLayout>
