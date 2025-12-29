@@ -15,61 +15,59 @@ const { Content } = await article.render();
 ---
 
 <BaseLayout title={`${article.data.title} — Mher Movsisyan`} description={article.data.description}>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="/" class="logo">Mher Movsisyan</a>
-      <nav class="nav">
-        <a href="/#expertise" class="nav-link">Expertise</a>
-        <a href="/#work" class="nav-link">Work</a>
-        <a href="/articles" class="nav-link">Writing</a>
-        <a href="/#contact" class="nav-cta">Get in touch</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Mesh Background -->
+  <div class="grid-overlay"></div>
 
-  <main class="container article-page">
-    <a href="/articles" class="back-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      All articles
-    </a>
-
-    <article>
-      <header class="article-header">
-        <span class="article-category">{article.data.category}</span>
-        <h1 class="article-title">{article.data.title}</h1>
-        <p class="article-desc">{article.data.description}</p>
-        <time class="article-meta">
-          {article.data.pubDate.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-          })}
-        </time>
-        
-        {article.data.tags && (
-          <div class="article-tags">
-            {article.data.tags.map((tag: string) => (
-              <span class="tag">{tag}</span>
-            ))}
-          </div>
-        )}
-      </header>
-
-      <div class="prose">
-        <Content />
+  <div class="quantum-layout">
+    <!-- Navigation Rail -->
+    <nav class="nav-rail">
+      <a href="/" class="brand-monogram" style="text-decoration: none; color: black;">M</a>
+      
+      <div class="nav-links">
+        <a href="/#hero" class="nav-item" data-label="Identity"></a>
+        <a href="/articles" class="nav-item active" data-label="Return"></a>
       </div>
-    </article>
+    </nav>
 
-    <footer class="article-footer">
-      <a href="/articles" class="btn btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Back to all articles
+    <main class="content-stream" style="padding-top: 120px; max-width: 900px;">
+      <a href="/articles" style="font-family: var(--font-data); color: #666; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 40px;">
+        <span style="color: var(--color-cyan);">&lt;</span> RETURN_TO_LOGS
       </a>
-    </footer>
-  </main>
+
+      <article>
+        <header style="margin-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px;">
+          <div style="font-family: var(--font-data); color: var(--color-acid); margin-bottom: 16px;">
+            Input: {article.data.category}
+          </div>
+          <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: white; margin-bottom: 24px;">
+            {article.data.title}
+          </h1>
+          <div style="font-family: var(--font-data); color: #666; font-size: 13px;">
+            > Executed on {article.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </div>
+        </header>
+
+        <div style="font-size: 18px; line-height: 1.8; color: #ccc;">
+          <Content />
+        </div>
+        
+        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px dashed rgba(255,255,255,0.1); font-family: var(--font-data); color: #444; text-align: center;">
+          END_OF_FILE
+        </div>
+      </article>
+    </main>
+  </div>
 </BaseLayout>
+
+<style>
+  /* Prose Overrides for Dark Mode */
+  :global(p) { margin-bottom: 24px; }
+  :global(h2) { color: white; margin: 48px 0 24px; font-size: 28px; }
+  :global(h3) { color: var(--color-cyan); margin: 32px 0 16px; font-family: var(--font-data); font-size: 20px; text-transform: uppercase; }
+  :global(ul) { margin-bottom: 24px; padding-left: 24px; }
+  :global(li) { margin-bottom: 8px; color: #ccc; }
+  :global(a) { color: var(--color-cyan); }
+  :global(code) { background: rgba(255,255,255,0.1); color: var(--color-acid); padding: 2px 6px; font-family: var(--font-data); }
+  :global(pre) { background: #000; border: 1px solid #333; padding: 24px; overflow-x: auto; margin: 32px 0; }
+  :global(blockquote) { border-left: 2px solid var(--color-purple); padding-left: 24px; color: #888; font-style: italic; }
+</style>

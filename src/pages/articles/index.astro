@@ -6,52 +6,47 @@ const allArticles = await getCollection('articles', ({ data }) => !data.draft);
 const sortedArticles = allArticles.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout title="Writing — Mher Movsisyan">
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="/" class="logo">Mher Movsisyan</a>
-      <nav class="nav">
-        <a href="/#expertise" class="nav-link">Expertise</a>
-        <a href="/#work" class="nav-link">Work</a>
-        <a href="/articles" class="nav-link">Writing</a>
-        <a href="/#contact" class="nav-cta">Get in touch</a>
-      </nav>
-    </div>
-  </header>
+<BaseLayout title="Data Logs — Mher Movsisyan">
+  <!-- Mesh Background -->
+  <div class="grid-overlay"></div>
 
-  <main class="container">
-    <div class="page-header">
-      <a href="/" class="back-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Home
-      </a>
+  <div class="quantum-layout">
+    <!-- Navigation Rail -->
+    <nav class="nav-rail">
+      <a href="/" class="brand-monogram" style="text-decoration: none; color: black;">M</a>
       
-      <div class="section-header" style="margin-bottom: 0;">
-        <span class="section-eyebrow">Ideas & Insights</span>
-        <h1 class="section-title">Writing</h1>
+      <div class="nav-links">
+        <a href="/#hero" class="nav-item" data-label="Identity"></a>
+        <a href="/#stack" class="nav-item" data-label="Stack"></a>
+        <a href="/#projects" class="nav-item" data-label="Projects"></a>
+        <a href="/#history" class="nav-item" data-label="History"></a>
+        <a href="/articles" class="nav-item active" data-label="Logs"></a>
+        <a href="/#comm" class="nav-item" data-label="Comm"></a>
       </div>
-    </div>
+    </nav>
 
-    <div class="articles-list">
-      {sortedArticles.map((article) => (
-        <a href={`/articles/${article.slug}`} class="article-row">
-          <div class="article-info">
-            <span class="article-category">{article.data.category}</span>
-            <h2 class="article-title">{article.data.title}</h2>
-            <p class="article-desc">{article.data.description}</p>
-          </div>
-          <time class="article-date">
-            {article.data.pubDate.toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'short', 
-              day: 'numeric' 
-            })}
-          </time>
-        </a>
-      ))}
-    </div>
-  </main>
+    <main class="content-stream" style="padding-top: 120px;">
+      <div class="subtitle-mono">System Memory</div>
+      <h1 class="glitch-text" data-text="Data Logs" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 60px;">Data Logs</h1>
+
+      <div class="logs-list">
+        {sortedArticles.map((article, index) => (
+          <a href={`/articles/${article.slug}`} class="log-entry" style="padding: 40px 0;">
+            <div style="flex: 1;">
+              <div style="font-family: var(--font-data); color: var(--color-cyan); font-size: 12px; margin-bottom: 8px;">
+                //{article.data.category.toUpperCase()}
+              </div>
+              <h2 class="log-title" style="font-size: 32px; margin-bottom: 12px;">{article.data.title}</h2>
+              <p style="color: #888; max-width: 600px; line-height: 1.6;">{article.data.description}</p>
+            </div>
+            
+            <div style="text-align: right; font-family: var(--font-data); color: #444; font-size: 12px;">
+              TIMESTAMP<br>
+              <span style="color: white;">{article.data.pubDate.toISOString().split('T')[0]}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+  </div>
 </BaseLayout>
