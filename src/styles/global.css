@@ -253,6 +253,12 @@ section {
   mix-blend-mode: multiply;
 }
 
+@media (max-width: 600px) {
+  .glitch-text::before {
+    display: none;
+  }
+}
+
 .subtitle-mono {
   font-family: var(--font-data);
   font-size: 14px;
