@@ -1,0 +1,166 @@
+---
+---
+
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <h2 class="section-title">
+          <span class="text-gradient">About Me</span>
+        </h2>
+        
+        <div class="about-text">
+          <p>
+            Hi, I'm <strong>Mher Movsisyan</strong>, a Software Engineer with over 
+            <strong>10 years of diverse experience</strong> spanning iOS development, 
+            on-device AI, and digital transformation consulting.
+          </p>
+          
+          <p>
+            My journey has taken me from running a small family business in manufacturing 
+            to working as an iOS engineer at <strong>Amazon</strong>, where I built features 
+            used by millions. Today, I'm passionate about <strong>on-device LLM models</strong> 
+            and building privacy-first AI experiences that run entirely on users' devices.
+          </p>
+          
+          <p>
+            I believe the future of AI is local and private. That's why I spend my time 
+            exploring frameworks like <strong>MLX</strong> and <strong>CoreML</strong>, 
+            building apps that bring powerful AI capabilities to iPhones without 
+            compromising user privacy.
+          </p>
+        </div>
+        
+        <div class="about-cta">
+          <a href="/contact" class="btn btn-primary">Get in Touch</a>
+          <a href="/articles" class="btn btn-secondary">Read My Articles</a>
+        </div>
+      </div>
+      
+      <div class="about-skills">
+        <div class="skills-card glass-card">
+          <h3>Core Expertise</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Swift</span>
+            <span class="skill-tag">SwiftUI</span>
+            <span class="skill-tag">UIKit</span>
+            <span class="skill-tag">Objective-C</span>
+            <span class="skill-tag">CoreML</span>
+            <span class="skill-tag">MLX</span>
+            <span class="skill-tag">On-Device AI</span>
+            <span class="skill-tag">LLMs</span>
+          </div>
+        </div>
+        
+        <div class="skills-card glass-card">
+          <h3>Technologies</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">ARKit</span>
+            <span class="skill-tag">Vision</span>
+            <span class="skill-tag">AVFoundation</span>
+            <span class="skill-tag">Combine</span>
+            <span class="skill-tag">Core Data</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        
+        <div class="skills-card glass-card">
+          <h3>Interests</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">On-Device LLMs</span>
+            <span class="skill-tag">Privacy-First AI</span>
+            <span class="skill-tag">Voice Assistants</span>
+            <span class="skill-tag">TTS Models</span>
+            <span class="skill-tag">Edge Computing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+
+  .about-content .section-title {
+    margin-bottom: var(--space-8);
+  }
+
+  .about-text {
+    margin-bottom: var(--space-8);
+  }
+
+  .about-text p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    margin-bottom: var(--space-6);
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-text strong {
+    color: var(--color-text-primary);
+  }
+
+  .about-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .about-skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .skills-card {
+    padding: var(--space-6);
+  }
+
+  .skills-card h3 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .skill-tag {
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    transition: all var(--transition-base);
+  }
+
+  .skill-tag:hover {
+    border-color: var(--color-accent-mid);
+    color: var(--color-text-primary);
+  }
+</style>

@@ -1,0 +1,149 @@
+---
+---
+
+<section class="apps-showcase section" id="apps">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="text-gradient">Personal Projects</span>
+      </h2>
+      <p class="section-subtitle">
+        Exploring the frontier of on-device AI through experimental apps
+      </p>
+    </div>
+    
+    <div class="apps-grid">
+      <a href="/offline-assistant" class="app-card glass-card">
+        <div class="app-badge">Coming Soon</div>
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path>
+            <circle cx="7.5" cy="14.5" r="1.5"></circle>
+            <circle cx="16.5" cy="14.5" r="1.5"></circle>
+          </svg>
+        </div>
+        <h3 class="app-name">Offline Assistant</h3>
+        <p class="app-description">
+          A fully offline AI assistant powered by on-device LLMs. 
+          Private, fast, and works without internet.
+        </p>
+        <div class="app-features">
+          <span>100% Offline</span>
+          <span>Privacy-First</span>
+          <span>On-Device AI</span>
+        </div>
+      </a>
+      
+      <div class="app-card glass-card placeholder">
+        <div class="app-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </div>
+        <h3 class="app-name">More Coming</h3>
+        <p class="app-description">
+          More on-device AI experiments in development. 
+          Stay tuned for updates!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .apps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .app-card {
+    position: relative;
+    padding: var(--space-8);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app-card:not(.placeholder) {
+    cursor: pointer;
+  }
+
+  .app-badge {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    padding: var(--space-1) var(--space-3);
+    background: var(--gradient-accent);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: white;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-6);
+    color: var(--color-accent-mid);
+  }
+
+  .app-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .app-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .app-description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+
+  .app-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .app-features span {
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .placeholder {
+    opacity: 0.6;
+  }
+
+  .placeholder .app-icon {
+    background: transparent;
+    border-style: dashed;
+  }
+</style>

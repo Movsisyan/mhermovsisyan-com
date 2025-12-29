@@ -1,0 +1,251 @@
+---
+const experiences = [
+  {
+    company: 'Amazon',
+    role: 'iOS Software Engineer',
+    team: 'Amazon Health Org',
+    period: '2022 - 2024',
+    location: 'Vancouver, BC',
+    achievements: [
+      'Built audio output selection feature on Amazon Care app, increasing customer satisfaction by 10%',
+      'Refactored messages attachments screen on One Medical app, improving load time by 50%',
+      'Led 3 developers during One Medical integration to Amazon',
+      'Mentored two new graduates through peer programming sessions'
+    ],
+    apps: [
+      { name: 'One Medical', url: 'https://apps.apple.com/us/app/one-medical/id393507802' },
+      { name: 'Amazon Shopping', url: 'https://apps.apple.com/us/app/amazon-shopping/id297606951' }
+    ]
+  },
+  {
+    company: 'Glovo',
+    role: 'iOS Software Engineer',
+    team: 'MarTech Team',
+    period: '2021 - 2022',
+    location: 'Remote',
+    achievements: [
+      'Implemented deep links improving user conversion by 10%',
+      'Built UI test suite reducing regression testing time',
+      'Enhanced Firebase Analytics, Braze, and Adjust integrations'
+    ],
+    apps: [
+      { name: 'Glovo App', url: 'https://apps.apple.com/us/app/glovo-food-delivery-and-more/id951812684' }
+    ]
+  },
+  {
+    company: 'Jybird LLC',
+    role: 'iOS Software Engineer',
+    team: 'Statum Systems',
+    period: '2019 - 2021',
+    location: 'Yerevan, Armenia',
+    achievements: [
+      'Designed and built one-to-one and group chat with message threads',
+      'Implemented VoIP and group video calling features',
+      'Designed BLE device synchronization logic'
+    ],
+    apps: [
+      { name: 'View on Behance', url: 'https://www.behance.net/gallery/122762899/Mobile-communication-patient-management-for-hospitals' }
+    ]
+  },
+  {
+    company: 'Kids SchoolHouse',
+    role: 'Founder & iOS Developer',
+    team: 'Personal Project',
+    period: '2016 - 2017',
+    location: 'Yerevan, Armenia',
+    achievements: [
+      'Developed engaging learning animations and educational games',
+      'Built interactive activities including coloring book and puzzle games',
+      'Managed collaboration with voice-over artist and backend developer'
+    ],
+    apps: []
+  }
+];
+---
+
+<section class="experience section" id="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="text-gradient">Experience</span>
+      </h2>
+      <p class="section-subtitle">
+        A decade of building apps that millions of people use daily
+      </p>
+    </div>
+    
+    <div class="timeline">
+      {experiences.map((exp, index) => (
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            {index !== experiences.length - 1 && <div class="marker-line"></div>}
+          </div>
+          
+          <div class="timeline-content glass-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="company-name">{exp.company}</h3>
+                <p class="role">{exp.role}</p>
+                <p class="team">{exp.team} • {exp.location}</p>
+              </div>
+              <span class="period">{exp.period}</span>
+            </div>
+            
+            <ul class="achievements">
+              {exp.achievements.map((achievement) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+            
+            {exp.apps.length > 0 && (
+              <div class="app-links">
+                {exp.apps.map((app) => (
+                  <a href={app.url} target="_blank" rel="noopener noreferrer" class="app-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    {app.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--gradient-accent);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+
+  .marker-line {
+    width: 2px;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, var(--color-accent-start), transparent);
+    margin-top: var(--space-2);
+  }
+
+  .timeline-content {
+    padding: var(--space-6);
+    flex-grow: 1;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .company-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+
+  .role {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    margin-bottom: var(--space-1);
+  }
+
+  .team {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .period {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-glass);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    white-space: nowrap;
+  }
+
+  .achievements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .achievements li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .achievements svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #22c55e;
+  }
+
+  .app-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-accent-mid);
+    transition: color var(--transition-base);
+  }
+
+  .app-link:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .timeline-marker {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+const { title, description, icon, features } = Astro.props;
+---
+
+<div class="service-card glass-card">
+  <div class="service-icon">
+    <Fragment set:html={icon} />
+  </div>
+  <h3 class="service-title">{title}</h3>
+  <p class="service-description">{description}</p>
+  <ul class="service-features">
+    {features.map((feature) => (
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {feature}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .service-card {
+    padding: var(--space-8);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-accent);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    color: white;
+  }
+
+  .service-icon :global(svg) {
+    width: 28px;
+    height: 28px;
+  }
+
+  .service-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+
+  .service-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    flex-grow: 1;
+  }
+
+  .service-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .service-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .service-features svg {
+    flex-shrink: 0;
+    color: #22c55e;
+  }
+</style>

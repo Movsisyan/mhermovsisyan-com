@@ -1,0 +1,78 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+  {
+    title: 'iOS App Development',
+    description: 'Custom iOS applications built with Swift, SwiftUI, and the latest Apple technologies.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`,
+    features: [
+      'Custom App Development',
+      'App Updates & Maintenance',
+      'Performance Optimization',
+      'On-Device AI Integration'
+    ]
+  },
+  {
+    title: 'iOS App Consulting',
+    description: 'Strategic guidance to help you build, scale, and optimize your iOS applications.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`,
+    features: [
+      'App Strategy Consulting',
+      'Architecture Design',
+      'Code Review & Audits',
+      'Process Improvement'
+    ]
+  },
+  {
+    title: 'On-Device AI Solutions',
+    description: 'Implement privacy-first AI features using on-device LLMs and machine learning.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path><circle cx="7.5" cy="14.5" r="1.5"></circle><circle cx="16.5" cy="14.5" r="1.5"></circle></svg>`,
+    features: [
+      'On-Device LLM Integration',
+      'CoreML Model Optimization',
+      'Privacy-First AI Design',
+      'MLX Framework Expertise'
+    ]
+  }
+];
+---
+
+<section class="services section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="text-gradient">Services</span>
+      </h2>
+      <p class="section-subtitle">
+        Helping businesses build intelligent, privacy-first mobile experiences
+      </p>
+    </div>
+    
+    <div class="services-grid">
+      {services.map((service) => (
+        <ServiceCard {...service} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
