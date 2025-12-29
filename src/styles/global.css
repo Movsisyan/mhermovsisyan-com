@@ -339,6 +339,7 @@ section {
 .stat-row {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   padding: 16px 0;
   border-bottom: 2px solid rgba(38, 70, 83, 0.1);
   /* Dark jungle green line */
