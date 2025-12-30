@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Offline Assistant — Mher Movsisyan">
+    <!-- Mesh Background -->
+    <div class="grid-overlay"></div>
+
+    <div class="quantum-layout">
+        <!-- Navigation Rail -->
+        <nav class="nav-rail">
+            <a
+                href="/"
+                class="brand-monogram"
+                style="text-decoration: none; color: black;">M</a
+            >
+
+            <div class="nav-links">
+                <a href="/#projects" class="nav-item" data-label="Return"></a>
+            </div>
+        </nav>
+
+        <main
+            class="content-stream"
+            style="padding-top: 120px; max-width: 900px;"
+        >
+            <a
+                href="/#projects"
+                style="font-family: var(--font-data); color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 40px;"
+            >
+                <span style="color: var(--color-cyan);">&lt;</span> RETURN_TO_PROJECTS
+            </a>
+
+            <!-- Header Section -->
+            <header
+                style="margin-bottom: 60px; border-bottom: 2px solid rgba(38, 70, 83, 0.1); padding-bottom: 40px;"
+            >
+                <div
+                    style="font-family: var(--font-data); color: var(--color-purple); margin-bottom: 16px;"
+                >
+                    Project: Offline Assistant
+                </div>
+                <h1
+                    style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: var(--text-main); margin-bottom: 24px;"
+                >
+                    A private, zero-UI AI assistant
+                </h1>
+                <div
+                    style="font-family: var(--font-data); color: var(--text-muted); font-size: 13px;"
+                >
+                    > Status: In Development | Platform: iOS
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <article
+                style="font-size: 18px; line-height: 1.8; color: var(--text-main);"
+            >
+                <p>
+                    I love testing the latest small on-device LLMs. Usually, I
+                    stick to open-source drops, but recently I decided to test
+                    Apple’s own foundation model. I was surprised by the result:
+                    it is quite competitive for specific, low-latency tasks.
+                </p>
+                <p>
+                    I realized that for the majority of daily communication, I
+                    didn't need a powerful chatbot; I needed a smart
+                    "autocomplete." So, I built a wrapper for myself called
+                    Offline Assistant.
+                </p>
+
+                <h3
+                    style="margin-top: 48px; margin-bottom: 24px; font-size: 24px;"
+                >
+                    The Problem: "Copy-Paste" Fatigue
+                </h3>
+                <p>
+                    We all have a set of questions we answer ten times a day.
+                    The problem is, they come from everywhere—iMessage,
+                    WhatsApp, Instagram, Email—and you are constantly switching
+                    apps to copy-paste the same answers.
+                </p>
+
+                <h3
+                    style="margin-top: 48px; margin-bottom: 24px; font-size: 24px;"
+                >
+                    The Solution: One Brain, Everywhere
+                </h3>
+                <p>
+                    I designed the app to be a central "Knowledge Base" for your
+                    specific context. You load your business info and FAQs once,
+                    and the AI uses on-device semantic search to generate the
+                    reply.
+                </p>
+
+                <!-- Feature Screenshots Grid -->
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 48px 0;"
+                >
+                    <img
+                        src="/images/offline-assistant-screen-1.png"
+                        alt="Test Assistant Interface"
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--text-main);"
+                    />
+                    <img
+                        src="/images/offline-assistant-screen-2.png"
+                        alt="Knowledge Base Management"
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--text-main);"
+                    />
+                    <img
+                        src="/images/offline-assistant-screen-3.png"
+                        alt="Home Dashboard"
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--text-main);"
+                    />
+                    <img
+                        src="/images/offline-assistant-screen-4.png"
+                        alt="Business Profile Settings"
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 2px solid var(--text-main);"
+                    />
+                </div>
+
+                <h3
+                    style="margin-top: 48px; margin-bottom: 24px; font-size: 24px;"
+                >
+                    Real-World Use Cases
+                </h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 24px;">
+                        <strong>The Swim Instructor:</strong> Parents ask, "What’s
+                        the price?" or "Is the pool heated?" The AI knows your rates
+                        and location and drafts a polite reply instantly.
+                    </li>
+                    <li style="margin-bottom: 24px;">
+                        <strong>The Tennis Court Manager:</strong> Players ask, "How
+                        do I book a slot?" The AI pulls the rules from your FAQ and
+                        generates a response regarding your cancellation policy.
+                    </li>
+                    <li style="margin-bottom: 24px;">
+                        <strong>The Marketplace Seller:</strong> "Is this available?"
+                        "What are the dimensions?" The AI checks your FAQ and replies
+                        with item details.
+                    </li>
+                    <li style="margin-bottom: 24px;">
+                        <strong>The Rental Host:</strong> "What is the Wifi password?"
+                        "Where do I park?" You generate a consistent, friendly answer
+                        instantly without typing.
+                    </li>
+                </ul>
+
+                <h3
+                    style="margin-top: 48px; margin-bottom: 24px; font-size: 24px;"
+                >
+                    The Workflow (Zero UI)
+                </h3>
+                <p>
+                    The best part is that you never actually have to open the
+                    app. It integrates with Apple Shortcuts and Back Tap:
+                </p>
+                <ol style="margin-left: 24px; margin-bottom: 24px;">
+                    <li>Copy the customer's message.</li>
+                    <li>Double-tap the back of your iPhone.</li>
+                    <li>Paste the generated reply.</li>
+                </ol>
+
+                <h3
+                    style="margin-top: 48px; margin-bottom: 24px; font-size: 24px;"
+                >
+                    Under the Hood
+                </h3>
+                <p>
+                    <strong>Architecture:</strong> Hybrid RAG architecture with on-device
+                    embeddings.<br />
+                    <strong>Privacy:</strong> 100% offline. No API calls, no cloud
+                    servers.<br />
+                    <strong>Model:</strong> Apple’s foundation model via the Neural
+                    Engine.<br />
+                    <strong>Constraints:</strong> 4096 tokens context window. Perfect
+                    for "one-shot" answer generation.
+                </p>
+            </article>
+
+            <div
+                style="margin-top: 80px; padding-top: 40px; border-top: 1px dashed var(--text-muted); font-family: var(--font-data); color: var(--text-muted); text-align: center;"
+            >
+                END_OF_FILE
+            </div>
+        </main>
+    </div>
+</BaseLayout>
+
+<style>
+    :global(strong) {
+        color: var(--color-purple);
+        font-weight: 800;
+    }
+</style>
