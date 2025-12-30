@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const articles = await getCollection('articles');
+  const articles = await getCollection("articles");
   return articles.map((article) => ({
     params: { slug: article.slug },
     props: { article },
@@ -14,15 +14,22 @@ const { article } = Astro.props;
 const { Content } = await article.render();
 ---
 
-<BaseLayout title={`${article.data.title} — Mher Movsisyan`} description={article.data.description}>
+<BaseLayout
+  title={`${article.data.title} — Mher Movsisyan`}
+  description={article.data.description}
+>
   <!-- Mesh Background -->
   <div class="grid-overlay"></div>
 
   <div class="quantum-layout">
     <!-- Navigation Rail -->
     <nav class="nav-rail">
-      <a href="/" class="brand-monogram" style="text-decoration: none; color: black;">M</a>
-      
+      <a
+        href="/"
+        class="brand-monogram"
+        style="text-decoration: none; color: black;">M</a
+      >
+
       <div class="nav-links">
         <a href="/#hero" class="nav-item" data-label="Identity"></a>
         <a href="/articles" class="nav-item active" data-label="Return"></a>
@@ -30,28 +37,49 @@ const { Content } = await article.render();
     </nav>
 
     <main class="content-stream" style="padding-top: 120px; max-width: 900px;">
-      <a href="/articles" style="font-family: var(--font-data); color: #666; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 40px;">
+      <a
+        href="/articles"
+        style="font-family: var(--font-data); color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 40px;"
+      >
         <span style="color: var(--color-cyan);">&lt;</span> RETURN_TO_LOGS
       </a>
 
       <article>
-        <header style="margin-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 40px;">
-          <div style="font-family: var(--font-data); color: var(--color-acid); margin-bottom: 16px;">
+        <header
+          style="margin-bottom: 60px; border-bottom: 2px solid rgba(38, 70, 83, 0.1); padding-bottom: 40px;"
+        >
+          <div
+            style="font-family: var(--font-data); color: var(--color-purple); margin-bottom: 16px;"
+          >
             Input: {article.data.category}
           </div>
-          <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: white; margin-bottom: 24px;">
+          <h1
+            style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: var(--text-main); margin-bottom: 24px;"
+          >
             {article.data.title}
           </h1>
-          <div style="font-family: var(--font-data); color: #666; font-size: 13px;">
-            > Executed on {article.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          <div
+            style="font-family: var(--font-data); color: var(--text-muted); font-size: 13px;"
+          >
+            > Executed on {
+              article.data.pubDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
           </div>
         </header>
 
-        <div style="font-size: 18px; line-height: 1.8; color: #ccc;">
+        <div
+          style="font-size: 18px; line-height: 1.8; color: var(--text-main);"
+        >
           <Content />
         </div>
-        
-        <div style="margin-top: 80px; padding-top: 40px; border-top: 1px dashed rgba(255,255,255,0.1); font-family: var(--font-data); color: #444; text-align: center;">
+
+        <div
+          style="margin-top: 80px; padding-top: 40px; border-top: 1px dashed var(--text-muted); font-family: var(--font-data); color: var(--text-muted); text-align: center;"
+        >
           END_OF_FILE
         </div>
       </article>
@@ -60,14 +88,68 @@ const { Content } = await article.render();
 </BaseLayout>
 
 <style>
-  /* Prose Overrides for Dark Mode */
-  :global(p) { margin-bottom: 24px; }
-  :global(h2) { color: white; margin: 48px 0 24px; font-size: 28px; }
-  :global(h3) { color: var(--color-cyan); margin: 32px 0 16px; font-family: var(--font-data); font-size: 20px; text-transform: uppercase; }
-  :global(ul) { margin-bottom: 24px; padding-left: 24px; }
-  :global(li) { margin-bottom: 8px; color: #ccc; }
-  :global(a) { color: var(--color-cyan); }
-  :global(code) { background: rgba(255,255,255,0.1); color: var(--color-acid); padding: 2px 6px; font-family: var(--font-data); }
-  :global(pre) { background: #000; border: 1px solid #333; padding: 24px; overflow-x: auto; margin: 32px 0; }
-  :global(blockquote) { border-left: 2px solid var(--color-purple); padding-left: 24px; color: #888; font-style: italic; }
+  /* Prose Overrides for Havana Theme */
+  :global(p) {
+    margin-bottom: 24px;
+    color: var(--text-main);
+  }
+  :global(h2) {
+    color: var(--text-main);
+    margin: 48px 0 24px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  :global(h3) {
+    color: var(--color-cyan);
+    margin: 32px 0 16px;
+    font-family: var(--font-data);
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+  :global(ul) {
+    margin-bottom: 24px;
+    padding-left: 24px;
+  }
+  :global(li) {
+    margin-bottom: 8px;
+    color: var(--text-main);
+  }
+  :global(li::marker) {
+    color: var(--color-acid);
+  }
+  :global(a) {
+    color: var(--color-cyan);
+  }
+  :global(code) {
+    background: rgba(233, 196, 106, 0.3);
+    color: var(--text-main);
+    padding: 2px 6px;
+    font-family: var(--font-data);
+    border-radius: 2px;
+  }
+  :global(pre) {
+    background: white;
+    border: 2px solid var(--text-main);
+    padding: 24px;
+    overflow-x: auto;
+    margin: 32px 0;
+    box-shadow: 6px 6px 0 rgba(233, 196, 106, 0.5);
+  }
+  :global(pre code) {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+  }
+  :global(blockquote) {
+    border-left: 3px solid var(--color-purple);
+    padding-left: 24px;
+    color: var(--text-muted);
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 12px 24px;
+  }
+  :global(strong) {
+    color: var(--color-purple);
+    font-weight: 800;
+  }
 </style>
