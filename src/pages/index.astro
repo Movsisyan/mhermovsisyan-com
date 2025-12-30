@@ -273,20 +273,20 @@ const recentArticles = articles
                 iOS Software Engineer in the Health organization.
                 <ul>
                   <li>
-                    Built an audio output selection feature for the Amazon Care
-                    app, increasing customer satisfaction by 10%.
+                    Built core audio features for Amazon Care to enhance the
+                    patient experience.
                   </li>
                   <li>
-                    Refactored message attachments on the One Medical app,
-                    improving screen load time by 50%.
+                    Re-architected message attachment handling in One Medical to
+                    significantly improve performance.
                   </li>
                   <li>
-                    Led the integration of One Medical into the Amazon
-                    ecosystem.
+                    Led technical integration initiatives merging One Medical
+                    into the wider Amazon ecosystem.
                   </li>
                   <li>
-                    Migrated functionalities from UIKit to SwiftUI on the One
-                    Medical app.
+                    Modernized the legacy codebase by migrating key flows from
+                    UIKit to SwiftUI.
                   </li>
                 </ul>
               </p>
@@ -316,9 +316,13 @@ const recentArticles = articles
               <p style="color: var(--text-muted); line-height: 1.6;">
                 Growth & Marketing Tech team.
                 <ul>
-                  <li>Implemented dynamic UI rendering engines.</li>
                   <li>
-                    Built A/B testing infrastructure to drive user acquisition.
+                    Architected dynamic UI rendering engines for flexible,
+                    server-driven interfaces.
+                  </li>
+                  <li>
+                    Developed robust A/B testing infrastructure to support
+                    data-driven product growth.
                   </li>
                 </ul>
               </p>
@@ -348,14 +352,17 @@ const recentArticles = articles
               <p style="color: var(--text-muted); line-height: 1.6;">
                 <ul>
                   <li>
-                    Built real-time communication features from the ground up
-                    using WebRTC and WebSocket technologies.
+                    Architected and built the entire real-time communication
+                    stack from the ground up.
                   </li>
                   <li>
-                    Designed and built one-to-one and group chat with message
-                    threads.
+                    Implemented complex messaging systems including group chats
+                    and threading.
                   </li>
-                  <li>Implemented VoIP and video calls.</li>
+                  <li>
+                    Engineered high-quality VoIP and video calling features
+                    using WebRTC.
+                  </li>
                 </ul>
               </p>
             </div>
@@ -384,14 +391,17 @@ const recentArticles = articles
               <p style="color: var(--text-muted); line-height: 1.6;">
                 Start-up & Freelance.
                 <ul>
-                  <li>Shipped 10+ smaller utility apps to the App Store.</li>
                   <li>
-                    Developed engaging learning animations and games for early
-                    childhood education.
+                    Shipped a diverse portfolio of utility apps to the App
+                    Store.
                   </li>
                   <li>
-                    Designed and implemented interactive activities like a
-                    coloring book and puzzle game.
+                    Developed interactive educational games and animations for
+                    early childhood learning.
+                  </li>
+                  <li>
+                    Crafted engaging, touch-first experiences for younger
+                    audiences.
                   </li>
                 </ul>
               </p>
@@ -400,7 +410,6 @@ const recentArticles = articles
         </div>
       </section>
 
-      <!-- SERVICES -->
       <section id="services">
         <div class="subtitle-mono">Collaboration</div>
         <h2
@@ -552,21 +561,27 @@ const recentArticles = articles
 
 <script>
   // Scroll Spy Implementation
+  // Scroll Spy Implementation
   const observerOptions = {
     root: null,
-    rootMargin: "-20% 0px -60% 0px", // Active when section is near top/middle
+    rootMargin: "-20% 0px -50% 0px",
     threshold: 0,
   };
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      // If we are at the bottom of the page, let the scroll event handler handle it
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 50
+      )
+        return;
+
       if (entry.isIntersecting) {
-        // Remove active class from all items
         document.querySelectorAll(".nav-item").forEach((item) => {
           item.classList.remove("active");
         });
 
-        // Add active class to corresponding item
         const id = entry.target.id;
         const activeNav = document.querySelector(`.nav-item[href="#${id}"]`);
         if (activeNav) {
@@ -576,8 +591,21 @@ const recentArticles = articles
     });
   }, observerOptions);
 
-  // Observe all sections
   document.querySelectorAll("section").forEach((section) => {
     observer.observe(section);
+  });
+
+  // Force "Contact" to be active when hitting the bottom of the page
+  window.addEventListener("scroll", () => {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 50
+    ) {
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        item.classList.remove("active");
+      });
+      const contactNav = document.querySelector(`.nav-item[href="#comm"]`);
+      if (contactNav) contactNav.classList.add("active");
+    }
   });
 </script>
