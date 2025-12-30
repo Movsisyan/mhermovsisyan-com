@@ -443,3 +443,49 @@ section {
   box-shadow: 6px 6px 0 var(--text-main);
   color: #fdf6e3;
 }
+
+/* ========================================
+   PROFILE IMAGE FRAME
+======================================== */
+.profile-frame {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-card);
+  border: 2px solid var(--text-main);
+  position: relative;
+  box-shadow: 6px 6px 0 rgba(42, 157, 143, 0.3);
+  /* Teal shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.profile-frame::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid var(--color-purple);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.profile-frame:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 rgba(231, 111, 81, 0.4);
+  /* Terracotta shadow on hover */
+}
+
+.profile-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(233, 196, 106, 0.1) 0%, rgba(42, 157, 143, 0.05) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
