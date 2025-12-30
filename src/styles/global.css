@@ -445,47 +445,72 @@ section {
 }
 
 /* ========================================
-   PROFILE IMAGE FRAME
+   PROFILE IMAGE FRAME (Vintage Photo)
 ======================================== */
 .profile-frame {
-  width: 100%;
+  width: 240px;
   aspect-ratio: 1;
-  background: var(--bg-card);
-  border: 2px solid var(--text-main);
+  margin: 0 auto;
+  /* Center in column */
+  background: #fff;
+  padding: 12px 12px 40px 12px;
+  /* Polaroid-style bottom padding */
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
-  box-shadow: 6px 6px 0 rgba(42, 157, 143, 0.3);
-  /* Teal shadow */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  overflow: hidden;
+  box-shadow:
+    5px 5px 15px rgba(0, 0, 0, 0.1),
+    1px 1px 2px rgba(0, 0, 0, 0.1);
+  transform: rotate(-3deg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
 }
 
 .profile-frame::before {
+  /* Tape effect */
   content: '';
   position: absolute;
-  top: 6px;
-  left: 6px;
-  right: 6px;
-  bottom: 6px;
-  border: 1px solid var(--color-purple);
-  opacity: 0.5;
-  pointer-events: none;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  border-left: 1px dashed rgba(0, 0, 0, 0.1);
+  border-right: 1px dashed rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  z-index: 2;
+}
+
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.3) contrast(1.1) grayscale(0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
 }
 
 .profile-frame:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 9px 9px 0 rgba(231, 111, 81, 0.4);
-  /* Terracotta shadow on hover */
+  transform: rotate(2deg) scale(1.05);
+  box-shadow:
+    15px 15px 30px rgba(0, 0, 0, 0.15),
+    2px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.profile-frame:hover img {
+  filter: sepia(0) contrast(1.05) grayscale(0);
 }
 
 .profile-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(233, 196, 106, 0.1) 0%, rgba(42, 157, 143, 0.05) 100%);
+  background: #eee;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted);
+  color: #999;
 }
+
+```
