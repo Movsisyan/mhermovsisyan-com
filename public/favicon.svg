@@ -1,13 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6366f1"/>
-      <stop offset="50%" style="stop-color:#8b5cf6"/>
-      <stop offset="100%" style="stop-color:#06b6d4"/>
-    </linearGradient>
-  </defs>
-  <rect width="128" height="128" rx="24" fill="#0a0a0f"/>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" 
-        font-family="Inter, system-ui, sans-serif" font-size="64" font-weight="700"
-        fill="url(#gradient)">MM</text>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#E76F51"/>
+  <rect x="2" y="2" width="60" height="60" rx="10" stroke="#264653" stroke-width="2"/>
+  <text x="32" y="44" font-family="monospace" font-weight="bold" font-size="36" text-anchor="middle" fill="#FDF6E3">M</text>
+  <path d="M48 48L64 64" stroke="#2A9D8F" stroke-width="4"/>
 </svg>
