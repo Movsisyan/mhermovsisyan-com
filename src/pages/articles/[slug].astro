@@ -152,4 +152,13 @@ const { Content } = await article.render();
     color: var(--color-purple);
     font-weight: 800;
   }
+  :global(img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 32px auto;
+    border: 2px solid var(--text-main);
+    box-shadow: 6px 6px 0 rgba(233, 196, 106, 0.5);
+    border-radius: 2px;
+  }
 </style>
